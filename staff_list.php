@@ -19,7 +19,6 @@ try {
     $dbh = new PDO($dsn, $user, $password);
     $dbh->query('SET NAMES utf8');
 
-    // データ追加
     $sql = 'SELECT * FROM mst_staff WHERE 1';
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
@@ -28,7 +27,7 @@ try {
 
     echo '
         <h1>スタッフ一覧</h1><br>
-        <form method="post" action="staff_edit.php">
+        <form method="post" action="staff_branch.php">
         ';
 
     while (true) {
@@ -45,7 +44,8 @@ try {
     }
 
     echo '
-        <input type="submit" value="修正">
+        <input type="submit" name="edit" value="修正">
+        <input type="submit" name="delete" value="削除">
         </form>
         ';
 
