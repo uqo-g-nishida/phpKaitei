@@ -44,6 +44,7 @@ try {
     }
 
     echo '
+        <input type="submit" name="disp" value="参照">
         <input type="submit" name="add" value="追加">
         <input type="submit" name="edit" value="修正">
         <input type="submit" name="delete" value="削除">
