@@ -39,7 +39,7 @@ try {
     $dbh = null;
 
     // 古い画像を削除
-    if ($pro_gazou_name_old != '') {
+    if ($pro_gazou_name_old != '' && $pro_gazou_name_old != $pro_gazou_name) {
         unlink("./gazou/${pro_gazou_name_old}");
     }
 
