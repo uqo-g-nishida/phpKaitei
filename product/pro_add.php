@@ -13,8 +13,8 @@
     <label for="name">商品名を入力してください</label><br>
     <input type="text" name="name" id="name" style="width:200px"><br>
     <label for="price">価格を入力してください</label><br>
-    <input type="text" name="price" id="price" style="witdh:100px"><br>
-    <input type="button"onclick="history.back()" value="戻る">
+    <input type="text" name="price" id="price" style="width:100px"><br>
+    <input type="button" onclick="history.back()" value="戻る">
     <input type="submit" value="OK">
 </form>
 </body>

@@ -14,9 +14,9 @@ $staff_name = $_POST['name'];
 $staff_pass = $_POST['pass'];
 $staff_pass2 = $_POST['pass2'];
 
-$staff_name = htmlspecialchars($staff_name,ENT_QUOTES,'UTF-8');
-$staff_pass = htmlspecialchars($staff_pass,ENT_QUOTES,'UTF-8');
-$staff_pass2 = htmlspecialchars($staff_pass2,ENT_QUOTES,'UTF-8');
+$staff_name = htmlspecialchars($staff_name, ENT_QUOTES, 'UTF-8');
+$staff_pass = htmlspecialchars($staff_pass, ENT_QUOTES, 'UTF-8');
+$staff_pass2 = htmlspecialchars($staff_pass2, ENT_QUOTES, 'UTF-8');
 
 $problem = false;
 
@@ -32,12 +32,12 @@ if ($staff_pass == '') {
     $problem = true;
 }
 
-if ($staff_pass != $staff_pass2){
+if ($staff_pass != $staff_pass2) {
     echo 'パスワードが一致していません。<br>';
     $problem = true;
 }
 
-if ($problem){
+if ($problem) {
     echo '
         <form>
         <input type="button" onclick="history.back()" value="戻る">
@@ -47,8 +47,8 @@ if ($problem){
     $staff_pass = md5($staff_pass);
     echo '
         <form method="post" action="staff_add_done.php">
-            <input type="hidden" name="name" value="' .$staff_name.'">
-            <input type="hidden" name="pass" value="'.$staff_pass.'">
+            <input type="hidden" name="name" value="' . $staff_name . '">
+            <input type="hidden" name="pass" value="' . $staff_pass . '">
             <input type="button" onclick="history.back()" value="戻る">
             <input type="submit" value="OK">
         </form>

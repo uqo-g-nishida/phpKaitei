@@ -27,8 +27,8 @@ try {
     $stmt->execute($data);
 
     $rec = $stmt->fetch(PDO::FETCH_ASSOC);
-    $pro_name=$rec['name'];
-    $pro_price=$rec['price'];
+    $pro_name = $rec['name'];
+    $pro_price = $rec['price'];
     $dbh = null;
 } catch (Exception $e) {
     echo 'ただいま障害により大変ご迷惑をおかけしております。';
@@ -38,13 +38,13 @@ try {
 ?>
 
 <h1>商品修正</h1><br>
-商品コード：<?=$pro_code?><br>
+商品コード：<?= $pro_code ?><br>
 <form method="post" action="pro_edit_check.php">
-    <input type="hidden" name="code" value="<?=$pro_code?>"><br>
+    <input type="hidden" name="code" value="<?= $pro_code ?>"><br>
     <label for="name">商品名</label><br>
-    <input type="text" name="name" id="name" value="<?=$pro_name?>"><br>
+    <input type="text" name="name" id="name" value="<?= $pro_name ?>"><br>
     <label for="price">価格を入力してください</label><br>
-    <input type="text" name="price" id="price" value="<?=$pro_price?>"><br>
+    <input type="text" name="price" id="price" value="<?= $pro_price ?>"><br>
     <input type="button" onclick="history.back()" value="戻る">
     <input type="submit" value="OK">
 </form>

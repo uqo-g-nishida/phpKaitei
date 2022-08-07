@@ -27,8 +27,8 @@ try {
     $stmt->execute($data);
 
     $rec = $stmt->fetch(PDO::FETCH_ASSOC);
-    $pro_name=$rec['name'];
-    $pro_price=$rec['price'];
+    $pro_name = $rec['name'];
+    $pro_price = $rec['price'];
     $dbh = null;
 } catch (Exception $e) {
     echo 'ただいま障害により大変ご迷惑をおかけしております。';
@@ -38,9 +38,9 @@ try {
 ?>
 
 <h1>商品参照</h1><br>
-商品コード：<?=$pro_code?><br>
-商品名：<?=$pro_name?><br>
-価格：<?=$pro_price?>円<br>
+商品コード：<?= $pro_code ?><br>
+商品名：<?= $pro_name ?><br>
+価格：<?= $pro_price ?>円<br>
 <form>
     <input type="button" onclick="history.back()" value="戻る">
 </form>

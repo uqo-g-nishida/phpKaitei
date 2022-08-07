@@ -27,7 +27,7 @@ try {
     $stmt->execute($data);
 
     $rec = $stmt->fetch(PDO::FETCH_ASSOC);
-    $staff_name=$rec['name'];
+    $staff_name = $rec['name'];
     $dbh = null;
 } catch (Exception $e) {
     echo 'ただいま障害により大変ご迷惑をおかけしております。';
@@ -37,11 +37,11 @@ try {
 ?>
 
 <h1>スタッフ修正</h1><br>
-スタッフコード：<?=$staff_code?><br>
+スタッフコード：<?= $staff_code ?><br>
 <form method="post" action="staff_edit_check.php">
-    <input type="hidden" name="code" value="<?=$staff_code?>"><br>
+    <input type="hidden" name="code" value="<?= $staff_code ?>"><br>
     <label for="name">スタッフ名</label><br>
-    <input type="text" name="name" id="name" value="<?=$staff_name?>"><br>
+    <input type="text" name="name" id="name" value="<?= $staff_name ?>"><br>
     <label for="pass">パスワードを入力してください</label><br>
     <input type="text" name="pass" id="pass"><br>
     <label for="pass2">パスワードをもう一度入力してください</label><br>

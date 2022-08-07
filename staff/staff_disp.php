@@ -27,7 +27,7 @@ try {
     $stmt->execute($data);
 
     $rec = $stmt->fetch(PDO::FETCH_ASSOC);
-    $staff_name=$rec['name'];
+    $staff_name = $rec['name'];
     $dbh = null;
 } catch (Exception $e) {
     echo 'ただいま障害により大変ご迷惑をおかけしております。';
@@ -37,8 +37,8 @@ try {
 ?>
 
 <h1>スタッフ修正</h1><br>
-スタッフコード：<?=$staff_code?><br>
-スタッフ名：<?=$staff_name?><br>
+スタッフコード：<?= $staff_code ?><br>
+スタッフ名：<?= $staff_name ?><br>
 <form>
     <input type="button" onclick="history.back()" value="戻る">
 </form>
