@@ -5,12 +5,11 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>スタッフ修正確認</title>
+    <title>スタッフ追加確認</title>
 </head>
 <body>
 
 <?php
-$staff_code = $_POST['code'];
 $staff_name = $_POST['name'];
 $staff_pass = $_POST['pass'];
 $staff_pass2 = $_POST['pass2'];
@@ -47,9 +46,8 @@ if ($problem){
 } else {
     $staff_pass = md5($staff_pass);
     echo '
-        <form method="post" action="staff_edit_done.php">
-            <input type="hidden" name="code" value="'.$staff_code.'">
-            <input type="hidden" name="name" value="'.$staff_name.'">
+        <form method="post" action="staff_add_done.php">
+            <input type="hidden" name="name" value="' .$staff_name.'">
             <input type="hidden" name="pass" value="'.$staff_pass.'">
             <input type="button" onclick="history.back()" value="戻る">
             <input type="submit" value="OK">
