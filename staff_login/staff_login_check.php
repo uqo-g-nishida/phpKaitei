@@ -33,6 +33,12 @@ try {
             <a href="staff_login.html">戻る</a>
             ';
     } else {
+        // セッション作成
+        session_start();
+        $_SESSION['login'] = 1;
+        $_SESSION['staff_code'] = $staff_code;
+        $_SESSION['staff_name'] = $rec['name'];
+
         header('Location: staff_top.php');
         exit();
     }

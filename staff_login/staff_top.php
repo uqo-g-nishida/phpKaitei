@@ -1,3 +1,17 @@
+<?php
+session_start();
+session_regenerate_id(true);
+if (isset($_SESSION['login']) == false) {
+    echo '
+        ログインされていません。<br>
+        <a href="../staff_login/staff_login.html">ログイン画面へ</a>
+        ';
+    exit();
+} else {
+    echo "${_SESSION['staff_name']}さんログイン中<br>";
+}
+?>
+
 <!doctype html>
 <html lang="ja">
 <head>
