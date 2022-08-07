@@ -13,10 +13,10 @@
 
 try {
     // DB接続
-    $dsn = 'mysql:dbname=shop;host=localhost';
+    $dsn = 'mysql:dbname=shop;host=localhost;';
     $user = 'root';
-    $priceword = '';
-    $dbh = new PDO($dsn, $user, $priceword);
+    $password = 'root';
+    $dbh = new PDO($dsn, $user, $password);
     $dbh->query('SET NAMES utf8');
 
     $sql = 'SELECT * FROM mst_product WHERE 1';

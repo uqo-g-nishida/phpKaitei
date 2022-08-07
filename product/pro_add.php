@@ -9,11 +9,13 @@
 </head>
 <body>
 <h1>商品追加</h1>
-<form method="post" action="pro_add_check.php">
+<form method="post" action="pro_add_check.php" enctype="multipart/form-data">
     <label for="name">商品名を入力してください</label><br>
-    <input type="text" name="name" id="name" style="width:200px"><br>
+    <input type="text" name="name" id="name"><br>
     <label for="price">価格を入力してください</label><br>
-    <input type="text" name="price" id="price" style="width:100px"><br>
+    <input type="text" name="price" id="price"><br>
+    <label for="gazou">画像を選択してください</label><br>
+    <input type="file" name="gazou" id="gazou"><br>
     <input type="button" onclick="history.back()" value="戻る">
     <input type="submit" value="OK">
 </form>

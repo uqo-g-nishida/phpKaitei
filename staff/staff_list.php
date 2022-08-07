@@ -15,7 +15,7 @@ try {
     // DB接続
     $dsn = 'mysql:dbname=shop;host=localhost';
     $user = 'root';
-    $password = '';
+    $password = 'root';
     $dbh = new PDO($dsn, $user, $password);
     $dbh->query('SET NAMES utf8');
 

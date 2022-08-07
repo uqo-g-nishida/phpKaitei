@@ -15,6 +15,7 @@ try {
 
     $pro_name = $_POST['name'];
     $pro_price = $_POST['price'];
+    $gazou_name = $_POST['gazou_name'];
 
     $pro_name = htmlspecialchars($pro_name, ENT_QUOTES, 'UTF-8');
     $pro_price = htmlspecialchars($pro_price, ENT_QUOTES, 'UTF-8');
@@ -22,15 +23,16 @@ try {
     // DB接続
     $dsn = 'mysql:dbname=shop;host=localhost';
     $user = 'root';
-    $password = '';
+    $password = 'root';
     $dbh = new PDO($dsn, $user, $password);
     $dbh->query('SET NAMES utf8');
 
     // データ追加
-    $sql = 'INSERT INTO mst_product (name,price) VALUES (?,?)';
+    $sql = 'INSERT INTO mst_product (name,price,gazou) VALUES (?,?,?)';
     $stmt = $dbh->prepare($sql);
     $data[] = $pro_name;
     $data[] = $pro_price;
+    $data[] = $gazou_name;
     $stmt->execute($data);
 
     $dbh = null;
