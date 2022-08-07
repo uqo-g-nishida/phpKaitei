@@ -59,7 +59,7 @@ try {
 
 ?>
 
-<a href="../">ホームに戻る</a>
+<a href="../staff_login/staff_top.php">ホームに戻る</a>
 
 </body>
 </html>
