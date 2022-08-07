@@ -24,8 +24,10 @@ if (isset($_SESSION['login']) == false) {
 <body>
 <h1>ショップ管理トップメニュー</h1><br>
 <br>
-<a href="../staff/staff_list.php">スタッフ一覧</a><br>
+<a href="../staff/staff_list.php">スタッフ管理</a><br>
 <br>
-<a href="../product/pro_list.php">商品一覧</a>
+<a href="../product/pro_list.php">商品管理</a><br>
+<br>
+<a href="staff_logout.php">ログアウト</a>
 </body>
 </html>
