@@ -15,6 +15,8 @@ try {
     $pro_code = $_POST['code'];
     $pro_name = $_POST['name'];
     $pro_price = $_POST['price'];
+    $pro_gazou_name_old = $_POST['gazou_name_old'];
+    $pro_gazou_name = $_POST['gazou_name'];
 
     $pro_name = htmlspecialchars($pro_name, ENT_QUOTES, 'UTF-8');
     $pro_price = htmlspecialchars($pro_price, ENT_QUOTES, 'UTF-8');
@@ -26,14 +28,20 @@ try {
     $dbh = new PDO($dsn, $user, $password);
     $dbh->query('SET NAMES utf8');
 
-    $sql = 'UPDATE mst_product SET name = ?, price = ? WHERE code = ?';
+    $sql = 'UPDATE mst_product SET name = ?, price = ?, gazou = ? WHERE code = ?';
     $stmt = $dbh->prepare($sql);
     $data[] = $pro_name;
     $data[] = $pro_price;
+    $data[] = $pro_gazou_name;
     $data[] = $pro_code;
     $stmt->execute($data);
 
     $dbh = null;
+
+    // 古い画像を削除
+    if ($pro_gazou_name_old != '') {
+        unlink("./gazou/${pro_gazou_name_old}");
+    }
 
     echo "商品コード：$pro_code を修正しました。<br>";
 

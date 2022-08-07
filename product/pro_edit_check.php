@@ -13,6 +13,8 @@
 $pro_code = $_POST['code'];
 $pro_name = $_POST['name'];
 $pro_price = $_POST['price'];
+$pro_gazou_name_old = $_POST['gazou_name_old'];
+$pro_gazou = $_FILES['gazou'];
 
 $pro_name = htmlspecialchars($pro_name, ENT_QUOTES, 'UTF-8');
 $pro_price = htmlspecialchars($pro_price, ENT_QUOTES, 'UTF-8');
@@ -33,6 +35,16 @@ if (!is_numeric($pro_price)) {
     echo "価格：$pro_price <br>";
 }
 
+if ($pro_gazou['size'] > 0) {
+    if ($pro_gazou['size'] > 1000000) {
+        echo '画像が大きすぎます。';
+        $problem = true;
+    } else {
+        move_uploaded_file($pro_gazou['tmp_name'],'./gazou/'.$pro_gazou['name']);
+        echo "<img src='./gazou/${pro_gazou['name']}'><br>";
+    }
+}
+
 if ($problem) {
     echo '
         <form>
@@ -45,6 +57,8 @@ if ($problem) {
             <input type="hidden" name="code" value="' . $pro_code . '">
             <input type="hidden" name="name" value="' . $pro_name . '">
             <input type="hidden" name="price" value="' . $pro_price . '">
+            <input type="hidden" name="gazou_name_old" value="' . $pro_gazou_name_old . '">
+            <input type="hidden" name="gazou_name" value="' . $pro_gazou['name'] . '">
             <input type="button" onclick="history.back()" value="戻る">
             <input type="submit" value="OK">
         </form>
