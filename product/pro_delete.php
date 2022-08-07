@@ -28,6 +28,7 @@ try {
 
     $rec = $stmt->fetch(PDO::FETCH_ASSOC);
     $pro_name = $rec['name'];
+    $pro_gazou_name = $rec['gazou'];
     $dbh = null;
 } catch (Exception $e) {
     echo 'ただいま障害により大変ご迷惑をおかけしております。';
@@ -39,10 +40,12 @@ try {
 <h1>商品削除</h1><br>
 商品コード：<?= $pro_code ?><br>
 商品名：<?= $pro_name ?><br>
+<img src="<?= "./gazou/${pro_gazou_name}" ?>"><br>
 この商品を削除してもよろしいですか？<br>
 
 <form method="post" action="pro_delete_done.php">
     <input type="hidden" name="code" value="<?= $pro_code ?>"><br>
+    <input type="hidden" name="gazou_name" value="<?= $pro_gazou_name ?>"><br>
     <input type="button" onclick="history.back()" value="戻る">
     <input type="submit" value="OK">
 </form>

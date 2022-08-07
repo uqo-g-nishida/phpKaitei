@@ -13,6 +13,7 @@
 
 try {
     $pro_code = $_POST['code'];
+    $pro_gazou_name = $_POST['gazou_name'];
 
     // DB接続
     $dsn = 'mysql:dbname=shop;host=localhost';
@@ -27,6 +28,10 @@ try {
     $stmt->execute($data);
 
     $dbh = null;
+
+    if ($pro_gazou_name != '') {
+        unlink("./gazou/$pro_gazou_name");
+    }
 
     echo "商品コード：$pro_code を削除しました。<br>";
 
