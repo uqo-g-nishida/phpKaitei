@@ -68,6 +68,9 @@ try {
 
 ?>
 
+<br>
+<a href="shop_cartlook.php">カートを見る</a><br>
+<br>
 <a href="../staff_login/staff_top.php">ホームに戻る</a>
 
 </body>

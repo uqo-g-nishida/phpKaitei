@@ -29,6 +29,7 @@ if (isset($_SESSION['member_login']) == false) {
 <?php
 
 try {
+
     $pro_code = $_GET['procode'];
 
     if (isset($_SESSION['cart'])) {

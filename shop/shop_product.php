@@ -60,7 +60,7 @@ try {
 商品名：<?= $pro_name ?><br>
 価格：<?= $pro_price ?>円<br>
 <img src="<?= "../product/gazou/${pro_gazou_name}" ?>"><br>
-<a href="shop_cartin.php?procode='<?= $pro_code ?>'">カートに入れる</a><br>
+<a href="shop_cartin.php?procode=<?= $pro_code ?>">カートに入れる</a><br>
 <form>
     <input type="button" onclick="history.back()" value="戻る">
 </form>
