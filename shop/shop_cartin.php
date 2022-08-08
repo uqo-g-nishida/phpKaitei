@@ -34,9 +34,12 @@ try {
 
     if (isset($_SESSION['cart'])) {
         $cart = $_SESSION['cart'];
+        $kazu = $_SESSION['kazu'];
     }
     $cart[] = $pro_code;
+    $kazu[] = 1;
     $_SESSION['cart'] = $cart;
+    $_SESSION['kazu'] = $kazu;
 
 } catch (Exception $e) {
     echo 'ただいま障害により大変ご迷惑をおかけしております。';

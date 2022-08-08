@@ -30,6 +30,8 @@ if (isset($_SESSION['member_login']) == false) {
 
 try {
     $cart = $_SESSION['cart'];
+    $kazu = $_SESSION['kazu'];
+    $max = count($cart);
 
     // DB接続
     $dsn = 'mysql:dbname=shop;host=localhost';
@@ -62,21 +64,24 @@ try {
 
 <h1>カートの中身</h1>
 
-<?php
-for ($i = 0; $i < count($cart); $i++) {
-?>
+<form action="kazu_change.php" method="post">
+    <?php
+    for ($i = 0; $i < $max; $i++) {
+    ?>
+    
+    <?= $pro_name[$i] ?>
+    <img src='../product/gazou/<?= $pro_gazou_name[$i]?>'>
+    <?= $pro_price[$i] ?>円
+    <input type="text" name="kazu<?=$i?>" id="<?=$i?>" value="<?= $kazu[$i] ?>">
+    <?= $pro_price[$i] * $kazu[$i] ?>円
+    <br>
+    
+    <?php
+    }
+    ?>
 
-<?= $pro_name[$i] ?>
-<img src='../product/gazou/<?= $pro_gazou_name[$i]?>'>
-<?= $pro_price[$i] ?>円
-<br>
-
-<?php
-}
-?>
-
-
-<form>
+    <input type="hidden" name="max" value="<?= $max ?>">
+    <input type="submit" value="数量変更"><br>
     <input type="button" onclick="history.back()" value="戻る">
 </form>
 

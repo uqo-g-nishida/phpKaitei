@@ -19,5 +19,10 @@ session_destroy();
 </head>
 <body>
 カートを空にしました。<br>
+
+<form>
+    <input type="button" onclick="history.back()" value="戻る">
+</form>
+
 </body>
 </html>
