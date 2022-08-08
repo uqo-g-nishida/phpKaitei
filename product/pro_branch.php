@@ -19,7 +19,7 @@ if (isset($_POST['disp'])) {
         exit();
     }
 
-    header("Location: shop_product.php?procode=$pro_code");
+    header("Location: pro_disp.php?procode=$pro_code");
     exit();
 }
 

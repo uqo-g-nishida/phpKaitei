@@ -41,7 +41,7 @@ if ($pro_name == '') {
     echo "商品名：$pro_name <br>";
 }
 
-if (!is_numeric($pro_price)) {
+if (!preg_match("/^\d+$/",$pro_price)) {
     echo '価格をきちんと入力してください<br>';
     $problem = true;
 } else {
