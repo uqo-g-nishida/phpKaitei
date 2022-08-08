@@ -11,6 +11,21 @@ $max = $post['max'];
 
 // 数量変更
 for ($i = 0; $i < $max; $i++) {
+    if (!preg_match("/^\d+$/", $post["kazu{$i}"])) {
+        echo '
+            数量に誤りがあります。<br>
+            <a href="shop_cartlook.php">カートに戻る</a>
+            ';
+        exit();
+    }
+    if ($post["kazu{$i}"] < 1 || 10 < $post["kazu{$i}"]) {
+        echo '
+            数量は必ず1個以上、10個までです。<br>
+            <a href="shop_cartlook.php">カートに戻る</a>
+            ';
+        exit();
+    }
+
     $kazu[] = $post["kazu{$i}"];
 }
 
