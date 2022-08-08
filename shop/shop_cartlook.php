@@ -33,6 +33,15 @@ try {
     $kazu = $_SESSION['kazu'];
     $max = count($cart);
 
+    if ($max == 0) {
+        echo '
+            カートに商品が入っていません。<br>
+            <br>
+            <a href="shop_list.php">商品一覧に戻る</a>
+            ';
+        exit();
+    }
+
     // DB接続
     $dsn = 'mysql:dbname=shop;host=localhost';
     $user = 'root';
@@ -74,6 +83,7 @@ try {
     <?= $pro_price[$i] ?>円
     <input type="text" name="kazu<?=$i?>" id="<?=$i?>" value="<?= $kazu[$i] ?>">
     <?= $pro_price[$i] * $kazu[$i] ?>円
+    <input type="checkbox" name="sakujo<?= $i ?>" id="sakujo<?= $i ?>">
     <br>
     
     <?php
