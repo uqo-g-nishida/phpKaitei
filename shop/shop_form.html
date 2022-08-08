@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ご購入手続き</title>
+</head>
+<body>
+
+<h1>お客様情報を入力してください</h1>
+
+<form action="shop_form_check.php" method="post">
+    <label for="onamae">お名前</label><br>
+    <input type="text" name="onamae" id="onamae"><br>
+    <label for="email">メールアドレス</label><br>
+    <input type="text" name="email" id="email"><br>
+    <label for="postal">郵便番号</label><br>
+    <input type="text" name="postal" id="postal"><br>
+    <label for="addres">住所</label><br>
+    <input type="text" name="addres" id="addres"><br>
+    <label for="tel">電話番号</label><br>
+    <input type="text" name="tel" id="tel"><br>
+    <input type="button" value="戻る" onclick="history.back()">
+    <input type="submit" value="OK">
+</form>
+
+</body>
+</html>
