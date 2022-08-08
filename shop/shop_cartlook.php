@@ -81,32 +81,32 @@ try {
 <form action="kazu_change.php" method="post">
     <table border="1">
         <thead>
-            <tr>
-                <th>商品</th>
-                <th>商品画像</th>
-                <th>価格</th>
-                <th>数量</th>
-                <th>小計</th>
-                <th>削除</th>
-            </tr>
+        <tr>
+            <th>商品</th>
+            <th>商品画像</th>
+            <th>価格</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>削除</th>
+        </tr>
         </thead>
         <tbody>
-            <?php
-            for ($i = 0; $i < $max; $i++) {
+        <?php
+        for ($i = 0; $i < $max; $i++) {
             ?>
 
             <tr>
                 <td><?= $pro_name[$i] ?></td>
-                <td><img src='../product/gazou/<?= $pro_gazou_name[$i]?>'></td>
+                <td><img src='../product/gazou/<?= $pro_gazou_name[$i] ?>'></td>
                 <td><?= $pro_price[$i] ?>円</td>
-                <td><input type="text" name="kazu<?=$i?>" id="<?=$i?>" value="<?= $kazu[$i] ?>"></td>
+                <td><input type="text" name="kazu<?= $i ?>" id="<?= $i ?>" value="<?= $kazu[$i] ?>"></td>
                 <td><?= $pro_price[$i] * $kazu[$i] ?>円</td>
                 <td><input type="checkbox" name="sakujo<?= $i ?>" id="sakujo<?= $i ?>"></td>
             </tr>
 
             <?php
-            }
-            ?>
+        }
+        ?>
         </tbody>
     </table>
 

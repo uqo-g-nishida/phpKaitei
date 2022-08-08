@@ -41,7 +41,7 @@ if ($pro_name == '') {
     echo "商品名：$pro_name <br>";
 }
 
-if (!preg_match("/^\d+$/",$pro_price)) {
+if (!preg_match("/^\d+$/", $pro_price)) {
     echo '価格をきちんと入力してください<br>';
     $problem = true;
 } else {
@@ -53,7 +53,7 @@ if ($pro_gazou['size'] > 0) {
         echo '画像が大きすぎます。';
         $problem = true;
     } else {
-        move_uploaded_file($pro_gazou['tmp_name'],'./gazou/'.$pro_gazou['name']);
+        move_uploaded_file($pro_gazou['tmp_name'], './gazou/' . $pro_gazou['name']);
         echo "<img src='./gazou/${pro_gazou['name']}'><br>";
     }
 }
