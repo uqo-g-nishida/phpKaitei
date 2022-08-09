@@ -9,7 +9,7 @@ if (isset($_SESSION['member_login']) == false) {
         ';
 } else {
     echo "
-        ようこそ${_SESSION['staff_name']}様
+        ようこそ${_SESSION['member_name']}様
         <a href='member_logout.php'>ログアウト</a><br>
         <br>
         ";
