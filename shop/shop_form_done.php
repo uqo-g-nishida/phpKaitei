@@ -72,6 +72,11 @@ try {
         $honbun .= "{$name} {$price}円 x {$suryo}個 = {$shokei}円\n";
     }
 
+    // TABLELOCK
+    $sql = 'LOCK TABLES dat_sales WRITE,dat_sales_product WRITE';
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+
     // DBに注文を登録
     $sql = 'INSERT INTO dat_sales(code_member,name,email,postal,address,tel) VALUES (?,?,?,?,?,?)';
     $stmt = $dbh->prepare($sql);
@@ -102,6 +107,11 @@ try {
         $data[] = $kazu[$i];
         $stmt->execute($data);
     }
+
+    // TABLEUNLOCK
+    $sql = 'UNLOCK TABLES';
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
 
     $dbh = null;
 
@@ -140,6 +150,13 @@ try {
     mb_internal_encoding('UTF-8');
     mb_send_mail('info@rokumarunouem.co.jp', $title, $honbun, $header);
 
+    // カートの削除
+    $_SESSION = array();
+    if (isset($_COOKIE[session_name()])) {
+        setcookie(session_name(), '', time() - 42000, '/');
+    }
+    session_destroy();
+
 } catch (Exception $e) {
     echo 'ただいま障害により大変ご迷惑をお掛けしております。';
     exit();
@@ -147,6 +164,9 @@ try {
 require_once '../common/sanitize.php';
 
 ?>
+
+<br>
+<a href="shop_list.php">商品画面へ</a>
 
 </body>
 </html>
