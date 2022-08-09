@@ -22,6 +22,31 @@
     <input type="text" name="addres" id="addres"><br>
     <label for="tel">電話番号</label><br>
     <input type="text" name="tel" id="tel"><br>
+
+    <br>
+    <input type="radio" name="chumon" id="chumonkonkai" value="chumonkonkai" checked>
+    <label for="chumonkonkai">今回だけの注文</label><br>
+    <input type="radio" name="chumon" id="chumontouroku" value="chumontouroku">
+    <label for="chumontouroku">会員登録しての注文</label><br>
+    <br>
+    ※会員登録する方は以下の項目も入力して下さい。<br>
+    <label for="pass">パスワードを入力して下さい。</label><br>
+    <input type="password" name="pass" id="pass"><br>
+    <label for="pass2">パスワードをもう一度入力して下さい。</label><br>
+    <input type="password" name="pass2" id="pass2"><br>
+    性別<br>
+    <input type="radio" name="danjo" id="dan" value="dan" checked>
+    <label for="dan">男性</label><br>
+    <input type="radio" name="danjo" id="jo" value="jo">
+    <label for="jo">女性</label><br>
+    <label for="birth">生まれ年</label><br>
+    <select name="birth" id="birth">
+        <option value="1900" selected>1900年代</option>
+        <option value="2000">2000年代</option>
+    </select>
+    <br>
+    <br>
+
     <input type="button" value="戻る" onclick="history.back()">
     <input type="submit" value="OK">
 </form>

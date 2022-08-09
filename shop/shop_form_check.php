@@ -20,6 +20,11 @@ $email = $post['email'];
 $postal = $post['postal'];
 $addres = $post['addres'];
 $tel = $post['tel'];
+$chumon = $post['chumon'];
+$pass = $post['pass'];
+$pass2 = $post['pass2'];
+$danjo = $post['danjo'];
+$birth = $post['birth'];
 
 $okflg = true;
 
@@ -68,6 +73,31 @@ if (!preg_match('/^[0-9]{2,4}-[0-9]{2,4}-[0-9]{3,4}$/', $tel)) {
         {$tel}<br><br>
         ";
 }
+
+if ($chumon == 'chumontouroku') {
+    if ($pass == '') {
+        echo 'パスワードが入力されていません。<br><br>';
+        $okflg = false;
+    }
+    if ($pass != $pass2) {
+        echo 'パスワードが一致しません。<br><br>';
+        $okflg = false;
+    }
+
+    echo '性別<br>';
+    if ($danjo == 'dan') {
+        echo '男性';
+    } else {
+        echo '女性';
+    }
+    echo '<br><br>';
+
+    echo '生まれ年';
+    echo $birth;
+    echo '年代';
+    echo '<br><br>';
+}
+
 ?>
 
 <?php if($okflg) : ?>
@@ -77,6 +107,10 @@ if (!preg_match('/^[0-9]{2,4}-[0-9]{2,4}-[0-9]{3,4}$/', $tel)) {
     <input type="hidden" name="postal" value="<?= $postal ?>">
     <input type="hidden" name="addres" value="<?= $addres ?>">
     <input type="hidden" name="tel" value="<?= $tel ?>">
+    <input type="hidden" name="chumon" value="<?= $chumon ?>">
+    <input type="hidden" name="pass" value="<?= $pass ?>">
+    <input type="hidden" name="danjo" value="<?= $danjo ?>">
+    <input type="hidden" name="birth" value="<?= $birth ?>">
     <input type="button" value="戻る" onclick="history.back()">
     <input type="submit" value="OK">
 </form>
