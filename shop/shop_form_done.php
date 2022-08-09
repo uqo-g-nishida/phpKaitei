@@ -25,6 +25,10 @@ try {
     $postal = $post['postal'];
     $addres = $post['addres'];
     $tel = $post['tel'];
+    $chumon = $post['chumon'];
+    $pass = $post['pass'];
+    $danjo = $post['danjo'];
+    $birth = $post['birth'];
 
     echo "
     {$onamae}様<br>
@@ -73,15 +77,38 @@ try {
     }
 
     // TABLELOCK
-    $sql = 'LOCK TABLES dat_sales WRITE,dat_sales_product WRITE';
+    $sql = 'LOCK TABLES dat_sales WRITE, dat_sales_product WRITE, dat_member WRITE';
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
+
+    // 会員登録
+    $lastmembercode = 0;
+    if ($chumon == 'chumontouroku') {
+        $sql = 'INSERT INTO dat_member (password,name,email,postal,address,tel,danjo,born) VALUES (?,?,?,?,?,?,?,?)';
+        $stmt = $dbh->prepare($sql);
+        $data = array();
+        $data[] = md5($pass);
+        $data[] = $onamae;
+        $data[] = $email;
+        $data[] = $postal;
+        $data[] = $addres;
+        $data[] = $tel;
+        $data[] = $danjo == 'dan' ? 1 : 2;
+        $data[] = $birth;
+        $stmt->execute($data);
+
+        $sql = 'SELECT LAST_INSERT_ID()';
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute();
+        $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+        $lastmembercode = $rec['LAST_INSERT_ID()'];
+    }
 
     // DBに注文を登録
     $sql = 'INSERT INTO dat_sales(code_member,name,email,postal,address,tel) VALUES (?,?,?,?,?,?)';
     $stmt = $dbh->prepare($sql);
     $data = array();
-    $data[] = 0;
+    $data[] = $lastmembercode;
     $data[] = $onamae;
     $data[] = $email;
     $data[] = $postal;
