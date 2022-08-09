@@ -54,6 +54,7 @@ try {
     $dbh = new PDO($dsn, $user, $password);
     $dbh->query('SET NAMES utf8');
 
+    // メール本文に設定
     for ($i = 0; $i < $max; $i++) {
 
         $sql = 'SELECT * FROM mst_product WHERE code = ?';
@@ -64,10 +65,42 @@ try {
         $rec = $stmt->fetch(PDO::FETCH_ASSOC);
         $name = $rec['name'];
         $price = $rec['price'];
+        $kakaku[] = $price;
         $suryo = $kazu[$i];
         $shokei = $price * $suryo;
 
         $honbun .= "{$name} {$price}円 x {$suryo}個 = {$shokei}円\n";
+    }
+
+    // DBに注文を登録
+    $sql = 'INSERT INTO dat_sales(code_member,name,email,postal,address,tel) VALUES (?,?,?,?,?,?)';
+    $stmt = $dbh->prepare($sql);
+    $data = array();
+    $data[] = 0;
+    $data[] = $onamae;
+    $data[] = $email;
+    $data[] = $postal;
+    $data[] = $addres;
+    $data[] = $tel;
+    $stmt->execute($data);
+
+    $sql = 'SELECT LAST_INSERT_ID()';
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+    $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+    $lastcode = $rec['LAST_INSERT_ID()'];
+
+    // DBに商品を登録
+    for ($i = 0; $i < $max; $i++) {
+        // DBに登録
+        $sql = 'INSERT INTO dat_sales_product(code_sales,code_product,price,quantity) VALUES (?,?,?,?)';
+        $stmt = $dbh->prepare($sql);
+        $data = array();
+        $data[] = $lastcode;
+        $data[] = $cart[$i];
+        $data[] = $kakaku[$i];
+        $data[] = $kazu[$i];
+        $stmt->execute($data);
     }
 
     $dbh = null;
