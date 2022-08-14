@@ -115,11 +115,9 @@ try {
         </tr>
         </thead>
         <tbody>
-        <?php
-        for ($i = 0; $i < $max; $i++) {
-            ?>
-
+        <?php for ($i = 0; $i < $max; $i++) : ?>
             <tr>
+                <input type="hidden" name="cart<?= $i ?>" value="<?= $cart[$i] ?>">
                 <td><?= $pro_name[$i] ?></td>
                 <td><img src='../product/gazou/<?= $pro_gazou_name[$i] ?>'></td>
                 <td><?= $pro_price[$i] ?>円</td>
@@ -127,16 +125,12 @@ try {
                 <td><?= $pro_price[$i] * $kazu[$i] ?>円</td>
                 <td><input type="checkbox" name="sakujo<?= $i ?>" id="sakujo<?= $i ?>"></td>
             </tr>
-
-            <?php
-        }
-        ?>
+        <?php endfor; ?>
         </tbody>
     </table>
 
     <input type="hidden" name="max" value="<?= $max ?>">
     <input type="submit" value="数量変更"><br>
-    <input type="button" onclick="history.back()" value="戻る">
 </form>
 
 <br>
@@ -147,6 +141,9 @@ if (isset($_SESSION["member_login"])) {
     echo '<a href="shop_kantan_check.php">会員かんたん注文に進む</a><br>';
 }
 ?>
+
+<br>
+<a href="index.php">一覧に戻る</a>
 
 </body>
 </html>
