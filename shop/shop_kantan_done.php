@@ -50,16 +50,31 @@ try {
         --------------------
         ";
 
-    $cart = $_SESSION['cart'];
-    $kazu = $_SESSION['kazu'];
-    $max = count($cart);
-
     // DB接続
     $dsn = 'mysql:dbname=shop;host=localhost';
     $user = 'root';
     $password = 'root';
     $dbh = new PDO($dsn, $user, $password);
     $dbh->query('SET NAMES utf8');
+
+    $sql = 'SELECT * FROM dat_cart WHERE member_code = ?';
+    $stmt = $dbh->prepare($sql);
+    $data[] = $_SESSION['member_code'];
+    $stmt->execute($data);
+
+    $cart = array();
+    $kazu = array();
+
+    while (true) {
+        $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$rec) break;
+
+        $cart[] = $rec['product_code'];
+        $kazu[] = $rec['quantity'];
+    }
+
+    $max = count($cart);
 
     // メール本文に設定
     for ($i = 0; $i < $max; $i++) {
@@ -120,8 +135,6 @@ try {
     $stmt = $dbh->prepare($sql);
     $stmt->execute();
 
-    $dbh = null;
-
     $honbun .= "
         送料は無料です。
         --------------------
@@ -137,7 +150,7 @@ try {
         ";
 
     // メール本文の確認用
-    // echo '<br>'.nl2br($honbun);
+    echo '<br>'.nl2br($honbun);
 
     // お客様用
     $title = 'ご注文ありがとうございます。';
@@ -156,11 +169,13 @@ try {
     mb_send_mail('info@rokumarunouem.co.jp', $title, $honbun, $header);
 
     // カートの削除
-    $_SESSION = array();
-    if (isset($_COOKIE[session_name()])) {
-        setcookie(session_name(), '', time() - 42000, '/');
-    }
-    session_destroy();
+    $sql = 'DELETE FROM dat_cart WHERE member_code = ?';
+    $stmt = $dbh->prepare($sql);
+    $data = array();
+    $data[] = $_SESSION['member_code'];
+    $stmt->execute($data);
+
+    $dbh = null;
 
 } catch (Exception $e) {
     echo 'ただいま障害により大変ご迷惑をお掛けしております。';
