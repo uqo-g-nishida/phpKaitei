@@ -30,12 +30,43 @@ if (isset($_SESSION['member_login']) == false) {
 
 try {
 
-    if (isset($_SESSION['cart'])) {
-        $cart = $_SESSION['cart'];
-        $kazu = $_SESSION['kazu'];
+    // DB接続
+    $dsn = 'mysql:dbname=shop;host=localhost';
+    $user = 'root';
+    $password = 'root';
+    $dbh = new PDO($dsn, $user, $password);
+    $dbh->query('SET NAMES utf8');
+
+    if (isset($_SESSION["member_login"])) {
+        // メンバー
+        $sql = 'SELECT * FROM dat_cart WHERE member_code = ?';
+        $stmt = $dbh->prepare($sql);
+        $data[] = $_SESSION['member_code'];
+        $stmt->execute($data);
+
+        $cart = array();
+        $kazu = array();
+
+        while (true) {
+            $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if (!$rec) break;
+
+            $cart[] = $rec['product_code'];
+            $kazu[] = $rec['quantity'];
+        }
+
         $max = count($cart);
+
     } else {
-        $max = 0;
+        // ゲスト
+        if (isset($_SESSION['cart'])) {
+            $cart = $_SESSION['cart'];
+            $kazu = $_SESSION['kazu'];
+            $max = count($cart);
+        } else {
+            $max = 0;
+        }
     }
 
     if ($max == 0) {
@@ -46,13 +77,6 @@ try {
             ';
         exit();
     }
-
-    // DB接続
-    $dsn = 'mysql:dbname=shop;host=localhost';
-    $user = 'root';
-    $password = 'root';
-    $dbh = new PDO($dsn, $user, $password);
-    $dbh->query('SET NAMES utf8');
 
     foreach ($cart as $key => $val) {
 
