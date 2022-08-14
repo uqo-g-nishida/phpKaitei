@@ -4,7 +4,7 @@ session_regenerate_id(true);
 if (!isset($_SESSION['member_login'])) {
     echo '
         ログインされていません。<br>
-        <a href="shop_list.php">商品一覧へ</a>
+        <a href="index.php">商品一覧へ</a>
         ';
     exit();
 }

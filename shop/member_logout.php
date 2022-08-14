@@ -20,6 +20,6 @@ session_destroy();
 <body>
 ログアウトしました。<br>
 <br>
-<a href="../shop/shop_list.php">商品一覧へ</a>
+<a href="index.php">商品一覧へ</a>
 </body>
 </html>

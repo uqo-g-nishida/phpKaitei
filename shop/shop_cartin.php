@@ -38,7 +38,7 @@ try {
         if (in_array($pro_code, $cart)) {
             echo '
                 その商品はすでにカートに入っています。<br>
-                <a href="shop_list.php">商品一覧に戻る</a>
+                <a href="index.php">商品一覧に戻る</a>
                 ';
             exit();
         }
@@ -57,7 +57,7 @@ try {
 
 カートに追加しました。<br>
 <br>
-<a href="shop_list.php">商品一覧に戻る</a>
+<a href="index.php">商品一覧に戻る</a>
 
 </body>
 </html>

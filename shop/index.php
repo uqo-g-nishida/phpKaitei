@@ -72,7 +72,7 @@ try {
 <a href="shop_cartlook.php">カートを見る</a><br>
 <a href="clear_cart.php">カートを空にする</a><br>
 <br>
-<a href="../staff_login/staff_top.php">ホームに戻る</a>
+<a href="../staff_login/staff_top.php">スタッフ専用画面</a>
 
 </body>
 </html>

@@ -4,7 +4,7 @@ session_regenerate_id(true);
 if (!isset($_SESSION['member_login'])) {
     echo '
         ログインされていません。<br>
-        <a href="shop_list.php">商品一覧へ</a>
+        <a href="index.php">商品一覧へ</a>
         ';
     exit();
 }
@@ -122,7 +122,7 @@ try {
 
     $dbh = null;
 
-    $honbun .="
+    $honbun .= "
         送料は無料です。
         --------------------
         
@@ -171,7 +171,7 @@ require_once '../common/sanitize.php';
 ?>
 
 <br>
-<a href="shop_list.php">商品画面へ</a>
+<a href="index.php">商品画面へ</a>
 
 </body>
 </html>

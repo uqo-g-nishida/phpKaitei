@@ -2,9 +2,9 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>ご購入手続き</title>
 </head>
 <body>
@@ -13,41 +13,41 @@
 
 <form action="shop_form_check.php" method="post">
     <label for="onamae">お名前</label><br>
-    <input type="text" name="onamae" id="onamae"><br>
+    <input id="onamae" name="onamae" type="text"><br>
     <label for="email">メールアドレス</label><br>
-    <input type="text" name="email" id="email"><br>
+    <input id="email" name="email" type="text"><br>
     <label for="postal">郵便番号</label><br>
-    <input type="text" name="postal" id="postal"><br>
+    <input id="postal" name="postal" type="text"><br>
     <label for="addres">住所</label><br>
-    <input type="text" name="addres" id="addres"><br>
+    <input id="addres" name="addres" type="text"><br>
     <label for="tel">電話番号</label><br>
-    <input type="text" name="tel" id="tel"><br>
+    <input id="tel" name="tel" type="text"><br>
 
     <br>
-    <input type="radio" name="chumon" id="chumonkonkai" value="chumonkonkai" checked>
+    <input checked id="chumonkonkai" name="chumon" type="radio" value="chumonkonkai">
     <label for="chumonkonkai">今回だけの注文</label><br>
-    <input type="radio" name="chumon" id="chumontouroku" value="chumontouroku">
+    <input id="chumontouroku" name="chumon" type="radio" value="chumontouroku">
     <label for="chumontouroku">会員登録しての注文</label><br>
     <br>
     ※会員登録する方は以下の項目も入力して下さい。<br>
     <label for="pass">パスワードを入力して下さい。</label><br>
-    <input type="password" name="pass" id="pass"><br>
+    <input id="pass" name="pass" type="password"><br>
     <label for="pass2">パスワードをもう一度入力して下さい。</label><br>
-    <input type="password" name="pass2" id="pass2"><br>
+    <input id="pass2" name="pass2" type="password"><br>
     性別<br>
-    <input type="radio" name="danjo" id="dan" value="dan" checked>
+    <input checked id="dan" name="danjo" type="radio" value="dan">
     <label for="dan">男性</label><br>
-    <input type="radio" name="danjo" id="jo" value="jo">
+    <input id="jo" name="danjo" type="radio" value="jo">
     <label for="jo">女性</label><br>
     <label for="birth">生まれ年</label><br>
-    <select name="birth" id="birth">
-        <option value="1900" selected>1900年代</option>
+    <select id="birth" name="birth">
+        <option selected value="1900">1900年代</option>
         <option value="2000">2000年代</option>
     </select>
     <br>
     <br>
 
-    <input type="button" value="戻る" onclick="history.back()">
+    <input onclick="history.back()" type="button" value="戻る">
     <input type="submit" value="OK">
 </form>
 

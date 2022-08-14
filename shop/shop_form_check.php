@@ -100,24 +100,24 @@ if ($chumon == 'chumontouroku') {
 
 ?>
 
-<?php if($okflg) : ?>
-<form action="shop_form_done.php" method="post">
-    <input type="hidden" name="onamae" value="<?= $onamae ?>">
-    <input type="hidden" name="email" value="<?= $email ?>">
-    <input type="hidden" name="postal" value="<?= $postal ?>">
-    <input type="hidden" name="addres" value="<?= $addres ?>">
-    <input type="hidden" name="tel" value="<?= $tel ?>">
-    <input type="hidden" name="chumon" value="<?= $chumon ?>">
-    <input type="hidden" name="pass" value="<?= $pass ?>">
-    <input type="hidden" name="danjo" value="<?= $danjo ?>">
-    <input type="hidden" name="birth" value="<?= $birth ?>">
-    <input type="button" value="戻る" onclick="history.back()">
-    <input type="submit" value="OK">
-</form>
+<?php if ($okflg) : ?>
+    <form action="shop_form_done.php" method="post">
+        <input type="hidden" name="onamae" value="<?= $onamae ?>">
+        <input type="hidden" name="email" value="<?= $email ?>">
+        <input type="hidden" name="postal" value="<?= $postal ?>">
+        <input type="hidden" name="addres" value="<?= $addres ?>">
+        <input type="hidden" name="tel" value="<?= $tel ?>">
+        <input type="hidden" name="chumon" value="<?= $chumon ?>">
+        <input type="hidden" name="pass" value="<?= $pass ?>">
+        <input type="hidden" name="danjo" value="<?= $danjo ?>">
+        <input type="hidden" name="birth" value="<?= $birth ?>">
+        <input type="button" value="戻る" onclick="history.back()">
+        <input type="submit" value="OK">
+    </form>
 <?php else : ?>
-<form>
-    <input type="button" value="戻る" onclick="history.back()">
-</form>
+    <form>
+        <input type="button" value="戻る" onclick="history.back()">
+    </form>
 <?php endif; ?>
 
 </body>
