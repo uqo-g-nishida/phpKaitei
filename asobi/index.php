@@ -1,14 +1,17 @@
 <?php
-require_once 'vendor/autoload.php';
+// Twigライブラリの読込み
+require_once '../vendor/autoload.php';
 
-// テンプレートファイルがあるディレクトリ（本サンプルではカレントディレクトリ）
-$loader = new Twig_Loader_Filesystem('.');
+// Twigを使用するテンプレートの読込み
+$loader = new \Twig\Loader\FilesystemLoader('./view');
+$twig = new \Twig\Environment($loader);
 
-$twig = new Twig_Environment($loader);
-
-$template = $twig->loadTemplate('sample.html.twig');
+// htmlに渡すデータ
 $data = array(
-    'title' => 'sample',
-    'message'  => 'My Webpage!',
+    'title' => 'MyTitle',
+    'message'  => 'MyMessage',
 );
-echo $template->render($data);
+
+// テンプレートのレンダリング
+echo $twig->render('index.html.twig', $data);
+?>
