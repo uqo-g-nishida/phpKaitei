@@ -48,4 +48,4 @@ $data = array(
 );
 
 // テンプレートのレンダリング
-echo $twig->render('shop_product.html.twig', $data);
+echo $twig->render('shop_product.twig', $data);

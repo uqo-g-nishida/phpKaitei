@@ -26,4 +26,4 @@ $data = array(
 );
 
 // テンプレートのレンダリング
-echo $twig->render('shop_form_check.html.twig', $data);
+echo $twig->render('shop_form_check.twig', $data);

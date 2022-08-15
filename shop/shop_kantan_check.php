@@ -48,4 +48,4 @@ $data = array(
 );
 
 // テンプレートのレンダリング
-echo $twig->render('shop_kantan_check.html.twig', $data);
+echo $twig->render('shop_kantan_check.twig', $data);

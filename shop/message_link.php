@@ -11,7 +11,7 @@ function view_message_link_page($message, $link, $link_text)
 
     // htmlに渡すデータ
     $data = array(
-        'title' => $message,
+        'title' => mb_substr($message, 0, 50),
         'login' => isset($_SESSION['member_login']),
         'member_name' => $_SESSION['member_name'],
         'message' => $message,
@@ -20,5 +20,5 @@ function view_message_link_page($message, $link, $link_text)
     );
 
     // テンプレートのレンダリング
-    echo $twig->render('message_link.html.twig', $data);
+    echo $twig->render('message_link.twig', $data);
 }

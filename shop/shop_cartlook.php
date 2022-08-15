@@ -98,4 +98,4 @@ $data = array(
 );
 
 // テンプレートのレンダリング
-echo $twig->render('shop_cartlook.html.twig', $data);
+echo $twig->render('shop_cartlook.twig', $data);

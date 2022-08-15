@@ -13,5 +13,5 @@ $data = array(
 );
 
 // テンプレートのレンダリング
-echo $twig->render('index.html.twig', $data);
+echo $twig->render('index.twig', $data);
 ?>
