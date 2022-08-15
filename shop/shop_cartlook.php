@@ -4,13 +4,13 @@ session_regenerate_id(true);
 if (isset($_SESSION['member_login']) == false) {
     echo '
         ようこそゲスト様
-        <a href="member_login.html">会員ログイン</a><br>
+        <a href="../member_login/member_login.html">会員ログイン</a><br>
         <br>
         ';
 } else {
     echo "
         ようこそ${_SESSION['member_name']}様
-        <a href='member_logout.php'>ログアウト</a><br>
+        <a href='../member_login/member_logout.php'>ログアウト</a><br>
         <br>
         ";
 }

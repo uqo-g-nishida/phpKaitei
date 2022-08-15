@@ -38,7 +38,7 @@ try {
         $_SESSION['member_code'] = $rec['code'];
         $_SESSION['member_name'] = $rec['name'];
 
-        header('Location: index.php');
+        header('Location: ../shop/index.php');
         exit();
     }
 } catch (Exception $e) {
