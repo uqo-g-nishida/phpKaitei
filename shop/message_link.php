@@ -2,7 +2,8 @@
 // Twigライブラリの読込み
 require_once '../vendor/autoload.php';
 
-function view_message_link_page($title, $login, $member_name, $message, $link, $link_text)
+/// メッセージとリンクだけのページ
+function view_message_link_page($message, $link, $link_text)
 {
     // Twigを使用するテンプレートの読込み
     $loader = new \Twig\Loader\FilesystemLoader('./view');
@@ -10,9 +11,9 @@ function view_message_link_page($title, $login, $member_name, $message, $link, $
 
     // htmlに渡すデータ
     $data = array(
-        'title' => $title,
-        'login' => $login,
-        'member_name' => $member_name,
+        'title' => $message,
+        'login' => isset($_SESSION['member_login']),
+        'member_name' => $_SESSION['member_name'],
         'message' => $message,
         'link' => $link,
         'link_text' => $link_text
