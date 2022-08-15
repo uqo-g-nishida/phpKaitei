@@ -1,13 +1,24 @@
 <?php
+require_once 'message_link.php';
+
+session_start();
+session_regenerate_id(true);
+
+if (!isset($_SESSION['member_login'])) {
+    view_message_link_page(
+        'ログインされていません。',
+        'index.php',
+        '商品一覧に戻る'
+    );
+    exit();
+}
+
 // Twigライブラリの読込み
 require_once '../vendor/autoload.php';
 
 // Twigを使用するテンプレートの読込み
 $loader = new \Twig\Loader\FilesystemLoader('./view');
 $twig = new \Twig\Environment($loader);
-
-session_start();
-session_regenerate_id(true);
 
 $code = $_SESSION['member_code'];
 
@@ -29,7 +40,6 @@ $dbh = null;
 // htmlに渡すデータ
 $data = array(
     'title' => '簡単注文',
-    'login' => isset($_SESSION['member_login']),
     'onamae' => $rec['name'],
     'email' => $rec['email'],
     'postal' => $rec['postal'],
@@ -38,4 +48,4 @@ $data = array(
 );
 
 // テンプレートのレンダリング
-echo $twig->render('shop_form_check.html.twig', $data);
+echo $twig->render('shop_kantan_check.html.twig', $data);

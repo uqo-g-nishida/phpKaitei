@@ -164,7 +164,7 @@ try {
     }
 
     // メール本文の確認用
-    // echo '<br>'.nl2br($honbun);
+    // $message .= $honbun;
 
     // お客様用
     $title = 'ご注文ありがとうございます。';

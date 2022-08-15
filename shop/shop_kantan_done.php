@@ -1,26 +1,18 @@
 <?php
+require_once 'message_link.php';
+
 session_start();
 session_regenerate_id(true);
+
 if (!isset($_SESSION['member_login'])) {
-    echo '
-        ログインされていません。<br>
-        <a href="index.php">商品一覧へ</a>
-        ';
+    view_message_link_page(
+        'ログインされていません。',
+        'index.php',
+        '商品一覧に戻る'
+    );
     exit();
 }
-?>
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ご注文完了</title>
-</head>
-<body>
 
-<?php
 try {
 
     require_once '../common/sanitize.php';
@@ -33,15 +25,15 @@ try {
     $addres = $post['addres'];
     $tel = $post['tel'];
 
-    echo "
-    {$onamae}様<br>
-    ご注文ありがとうございました。<br>
-    {$email}にメールを送りましたのでご確認ください。<br>
-    商品は以下の住所に送付させていただきます。<br>
-    {$postal}<br>
-    {$addres}<br>
-    {$tel}<br>
-    ";
+    $message = "
+        {$onamae}様\n
+        ご注文ありがとうございました。\n
+        {$email}にメールを送りましたのでご確認ください。\n
+        商品は以下の住所に送付させていただきます。\n
+        {$postal}\n
+        {$addres}\n
+        {$tel}\n
+        ";
 
     $honbun = "
         {$onamae}様
@@ -150,7 +142,7 @@ try {
         ";
 
     // メール本文の確認用
-    echo '<br>'.nl2br($honbun);
+    // $message .= $honbun;
 
     // お客様用
     $title = 'ご注文ありがとうございます。';
@@ -181,12 +173,9 @@ try {
     echo 'ただいま障害により大変ご迷惑をお掛けしております。';
     exit();
 }
-require_once '../common/sanitize.php';
 
-?>
-
-<br>
-<a href="index.php">商品画面へ</a>
-
-</body>
-</html>
+view_message_link_page(
+    $message,
+    'index.php',
+    '商品一覧に戻る'
+);
