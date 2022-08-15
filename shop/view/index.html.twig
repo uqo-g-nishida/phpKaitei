@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ title }}</title>
+</head>
+<body>
+
+{% if login %}
+ようこそ{{ member_name }}様
+<a href='member_logout.php'>ログアウト</a><br>
+<br>
+{% else %}
+ようこそゲスト様
+<a href="member_login.html">会員ログイン</a><br>
+<br>
+{% endif %}
+
+<h1>{{ title }}</h1><br>
+
+{% for product in products %}
+    <a href='shop_product.php?procode={{ product.code }}'>
+        {{ product.code }} {{ product.name }} {{ product.price }}
+    </a>
+    <br>
+{% endfor %}
+
+<br>
+<a href="shop_cartlook.php">カートを見る</a><br>
+<a href="clear_cart.php">カートを空にする</a><br>
+
+<br>
+<a href="../staff_login/staff_login.html">スタッフ専用画面</a>
+
+</body>
+</html>
