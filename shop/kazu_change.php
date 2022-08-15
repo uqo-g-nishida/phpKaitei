@@ -1,9 +1,9 @@
 <?php
-
 session_start();
 session_regenerate_id(true);
 
 require_once '../common/sanitize.php';
+require_once 'message_link.php';
 
 $post = sanitize($_POST);
 
@@ -19,17 +19,19 @@ $dbh->query('SET NAMES utf8');
 // 数量変更
 for ($i = 0; $i < $max; $i++) {
     if (!preg_match("/^\d+$/", $post["kazu{$i}"])) {
-        echo '
-            数量に誤りがあります。<br>
-            <a href="shop_cartlook.php">カートに戻る</a>
-            ';
+        view_message_link_page(
+            '数量に誤りがあります。',
+            'shop_cartlook.php',
+            'カートに戻る'
+        );
         exit();
     }
     if ($post["kazu{$i}"] < 1 || 10 < $post["kazu{$i}"]) {
-        echo '
-            数量は必ず1個以上、10個までです。<br>
-            <a href="shop_cartlook.php">カートに戻る</a>
-            ';
+        view_message_link_page(
+            '数量は必ず1個以上、10個までです。',
+            'shop_cartlook.php',
+            'カートに戻る'
+        );
         exit();
     }
 

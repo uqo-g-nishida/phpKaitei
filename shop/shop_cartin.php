@@ -37,12 +37,12 @@ try {
         $max = count($cart);
 
         if (in_array($pro_code, $cart)) {
+            $dbh = null;
             view_message_link_page(
                 'その商品はすでにカートに入っています。',
                 'index.php',
                 '商品一覧に戻る'
             );
-            $dbh = null;
             exit();
         }
 
